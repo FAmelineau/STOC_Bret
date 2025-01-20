@@ -110,7 +110,7 @@ plot(st_geometry(Bret))
 alouette.bret = st_intersection(alouette,Bret)
 ggplot() + 
   geom_sf(data = Bret, fill = "white", color = "black") + # Contour du département35
-  geom_sf(data = bruantj.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
+  geom_sf(data = alouette.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
   theme_minimal() + #juste pour l'esthétique
   ggtitle("Observations (STOP-eps) d'alouettes des champs en Bretagne") #ajout d'un titre
 

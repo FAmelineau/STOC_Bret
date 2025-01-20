@@ -10,9 +10,14 @@ library(dplyr) #permet d'utiliser %>%, filter, summarize et bien d'autres.
 library(sf) #pour manipuler des objets spatiaux
 library(ggplot2)  #pour les graphiques
 
-alouette.bret = readRDS("data/alouette.bret.RDS")
+# ici mettre votre chemin d'accès jusqu'au dossier où se trouvent les fichiers .RDS 
+# (penser à changer les \ en / )
 
-bruantj.bret = readRDS( "data/bruantj.bret.RDS")
+mypath = "C:/Users/fameline/OneDrive - ENS RENNES/Documents/CPES/L2 24-25/suivi oiseaux communs/STOC_Bret/data"
+
+alouette.bret = readRDS(paste0(mypath,"/alouette.bret.RDS"))
+
+bruantj.bret = readRDS( paste0(mypath,"/bruantj.bret.RDS"))
 
 sum.alouette = alouette.bret %>% 
   st_drop_geometry() %>% 
