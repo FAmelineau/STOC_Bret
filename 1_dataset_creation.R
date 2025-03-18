@@ -77,7 +77,7 @@ bruantj_in_dep35 <- st_intersection(bruantj, dep35)
 tourt_in_dep35 <- st_intersection(tourt, dep35)
 charbo_in_dep35 <- st_intersection(charbo, dep35)
 
-#représneter
+#représenter
 ggplot() + 
   geom_sf(data = dep35, fill = "white", color = "black") + # Contour du département
   geom_sf(data = charbo_in_dep35, aes(color = "Mésange charbonnière"), size = 1) + # Points pour mésange charbonnière
@@ -122,7 +122,7 @@ ggplot() +
   geom_sf(data = Bret, fill = "white", color = "black") + # Contour du département35
   geom_sf(data = alouette.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
   theme_minimal() + #juste pour l'esthétique
-  ggtitle("Observations (STOP-eps) d'alouettes des champs en Bretagne") #ajout d'un titre
+  ggtitle("Observations (STOC-eps) d'alouettes des champs en Bretagne") #ajout d'un titre
 
 #pour le bruant
 bruantj.bret = st_intersection(bruantj,Bret)
@@ -130,7 +130,7 @@ ggplot() +
   geom_sf(data = Bret, fill = "white", color = "black") + # Contour du département35
   geom_sf(data = bruantj.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
   theme_minimal() + #juste pour l'esthétique
-  ggtitle("Observations (STOP-eps) de Bruants jaunes en Bretagne") #ajout d'un titre
+  ggtitle("Observations (STOC-eps) de Bruants jaunes en Bretagne") #ajout d'un titre
 
 #pour la mésange
 charbo.bret = st_intersection(charbo,Bret)
@@ -138,7 +138,20 @@ ggplot() +
   geom_sf(data = Bret, fill = "white", color = "black") + # Contour du département35
   geom_sf(data = charbo.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
   theme_minimal() + #juste pour l'esthétique
-  ggtitle("Observations (STOP-eps) de Bruants jaunes en Bretagne") #ajout d'un titre
+  ggtitle("Observations (STOC-eps) de mésanges charbonnières en Bretagne") #ajout d'un titre
+
+
+
+#pour la tourterelle des bois
+tourt.bret = st_intersection(tourt,Bret)
+ggplot() +
+  geom_sf(data = Bret, fill = "white", color = "black") + # Contour du département35
+  geom_sf(data = tourt.bret, color = "blue", size = 1) + # Observations d'alouettes extraites
+  theme_minimal() + #juste pour l'esthétique
+  ggtitle("Observations (STOC-eps) de tourterelles des bois en Bretagne") #ajout d'un titre
+
+
+
 
 # Dataset avec toutes les espèces en Bretagne
 
@@ -156,6 +169,10 @@ write.csv2(alouette.bret, "data/alouette.bret.csv")
 
 saveRDS(bruantj.bret, "data/bruantj.bret.RDS")
 write.csv2(bruantj.bret, "data/bruantj.bret.csv")
+
+saveRDS(charbo.bret, "data/charbo.bret.RDS")
+
+saveRDS(tourt.bret, "data/tourt.bret.RDS")
 
 
 # Pour le fun : créer une carte interactive -------------------------------
