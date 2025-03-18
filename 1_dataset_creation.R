@@ -55,6 +55,72 @@ ggplot() +
   theme_minimal() + #juste pour l'esthétique
   ggtitle("Observations (STOP-eps) d'Alouettes des champs en Ille-et-Vilaine") #ajout d'un titre
 
+#Linaria cannabina linotte mélodieuse
+linotte = mydat %>%  filter(species == "Linaria cannabina")
+
+#convertir les donées STOC qui contiennent déjà des colonnes Longitude et Latitude
+#en objet spatial aussi (les données Lon Lat sont reconnues grâce au système de coordonnées)
+linotte = st_as_sf(linotte,coords = c("decimalLongitude","decimalLatitude"), crs = 4326)
+#le crs est est le "Coordinate Reference System", ici WGS84, système géodésique mondial
+plot(st_geometry(linotte)) #représente toutes les observations de l'linotte en France, selon leurs coordonnées (st_geometry pour ne représenter les points qu'une fois, selon la colonne geometry uniquement)
+
+
+#représenter les observations d'alouettes en Bretagne
+ggplot() + 
+  geom_sf(data = dep35) + #trace le contour du département 35
+  geom_sf(data = linotte) + #ajoute les données d'observation d'alouettes
+  coord_sf(xlim = c(-6,0), ylim = c(46,49.5), expand = FALSE) 
+
+#Linaria cannabina linotte mélodieuse
+fauvette = mydat %>%  filter(species == "Sylvia communis")
+
+#convertir les donées STOC qui contiennent déjà des colonnes Longitude et Latitude
+#en objet spatial aussi (les données Lon Lat sont reconnues grâce au système de coordonnées)
+fauvette = st_as_sf(fauvette,coords = c("decimalLongitude","decimalLatitude"), crs = 4326)
+#le crs est est le "Coordinate Reference System", ici WGS84, système géodésique mondial
+plot(st_geometry(fauvette)) #représente toutes les observations de l'fauvette en France, selon leurs coordonnées (st_geometry pour ne représenter les points qu'une fois, selon la colonne geometry uniquement)
+
+
+#représenter les observations d'alouettes en Bretagne
+ggplot() + 
+  geom_sf(data = dep35) + #trace le contour du département 35
+  geom_sf(data = fauvette) + #ajoute les données d'observation d'alouettes
+  coord_sf(xlim = c(-6,0), ylim = c(46,49.5), expand = FALSE) 
+
+
+#Linaria cannabina linotte mélodieuse
+tarier = mydat %>%  filter(species == "Saxicola rubetra")
+
+#convertir les donées STOC qui contiennent déjà des colonnes Longitude et Latitude
+#en objet spatial aussi (les données Lon Lat sont reconnues grâce au système de coordonnées)
+tarier = st_as_sf(tarier,coords = c("decimalLongitude","decimalLatitude"), crs = 4326)
+#le crs est est le "Coordinate Reference System", ici WGS84, système géodésique mondial
+plot(st_geometry(tarier)) #représente toutes les observations de l'fauvette en France, selon leurs coordonnées (st_geometry pour ne représenter les points qu'une fois, selon la colonne geometry uniquement)
+
+
+#représenter les observations d'alouettes en Bretagne
+ggplot() + 
+  geom_sf(data = dep35) + #trace le contour du département 35
+  geom_sf(data = tarier) + #ajoute les données d'observation d'alouettes
+  coord_sf(xlim = c(-6,0), ylim = c(46,49.5), expand = FALSE) 
+
+
+#Linaria cannabina linotte mélodieuse
+moinfri = mydat %>%  filter(species == "Passer montanus")
+
+#convertir les donées STOC qui contiennent déjà des colonnes Longitude et Latitude
+#en objet spatial aussi (les données Lon Lat sont reconnues grâce au système de coordonnées)
+moinfri = st_as_sf(moinfri,coords = c("decimalLongitude","decimalLatitude"), crs = 4326)
+#le crs est est le "Coordinate Reference System", ici WGS84, système géodésique mondial
+plot(st_geometry(moinfri)) #représente toutes les observations de l'moinfri en France, selon leurs coordonnées (st_geometry pour ne représenter les points qu'une fois, selon la colonne geometry uniquement)
+
+
+#représenter les observations d'alouettes en Bretagne
+ggplot() + 
+  geom_sf(data = dep35) + #trace le contour du département 35
+  geom_sf(data = moinfri) + #ajoute les données d'observation d'alouettes
+  coord_sf(xlim = c(-6,0), ylim = c(46,49.5), expand = FALSE) 
+
 
 # Même chose avec les autres espèces --------------------------------------
 
@@ -192,4 +258,7 @@ tm_shape(charbo.bret) +
   tm_layout(title = "Observations des espèces (STOC-EPS) en Bretagne",
             legend.show = TRUE,
             legend.outside = TRUE)
+
+
+
 
